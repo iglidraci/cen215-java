@@ -1,9 +1,17 @@
 import javax.swing.*;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in).useDelimiter("\\n");
+        int in1 = scanner.nextInt();
+        String in2 = scanner.next();
+        System.out.println("First input is " + in1);
+        System.out.println("Second input is " + in2);
         System.out.println("In math => 0.1 + 0.2 = 0.3");
         double res = 0.1 + 0.2;
         System.out.println("In Java => 0.1 + 0.2 = " + res);
@@ -25,6 +33,7 @@ public class Test {
         var ageInput = JOptionPane.showInputDialog(null, question, title,JOptionPane.QUESTION_MESSAGE);
         int year = Integer.parseInt(ageInput);
         int currentYear = LocalDate.now().getYear();
+        var currentMonth = LocalDate.now().getMonthValue();
         int age = currentYear - year;
         System.out.println("Your age is " + age);
         switch (age) {
@@ -47,12 +56,15 @@ public class Test {
         System.out.println(a==b);
         var confirm = JOptionPane.showConfirmDialog(null, "Do you want to continue?");
         System.out.print("Confirm is "+confirm);
-        double count = 1;
+        double item = 1;
+        int count = 1;
         double sum = 0;
-        while (count !=0) {
-            sum += count;
-            count -= .1;
-            System.out.printf("%.2f\n", count);
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.FLOOR);
+        while (!df.format(item).equals("0")) {
+            sum += item;
+            item -= .1;
+            System.out.printf("%s\n", df.format(item));
         }
         System.out.print("End");
     }
