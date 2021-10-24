@@ -9,7 +9,6 @@ import java.time.LocalDate;
 public class Welcome {
 
     public static void main(String[] args) {
-        System.out.printf("");
         System.out.println("Hello world");
         JOptionPane.showMessageDialog(null, "Whats upp?!", "Tell us", JOptionPane.INFORMATION_MESSAGE);
         JOptionPane.showMessageDialog(null, "Are you there?", "Simple Question", JOptionPane.INFORMATION_MESSAGE);
@@ -23,6 +22,7 @@ public class Welcome {
         char a = 'a';
         System.out.println("a="+(a++));
         System.out.println("b=" + a);
+        // calculate the age of a person from year they were born, month, day
         String inputStr = JOptionPane.showInputDialog(null, "Birth year:", "Enter the year you were born", 
                 JOptionPane.QUESTION_MESSAGE);
         int bornYear = Integer.parseInt(inputStr);
@@ -32,8 +32,14 @@ public class Welcome {
                 JOptionPane.QUESTION_MESSAGE);
         int bornMonth = Integer.parseInt(inputStr);
         int currentMonth = LocalDate.now().getMonthValue();
-        if (currentMonth >= bornMonth)
-            age++;
+        inputStr = JOptionPane.showInputDialog(null, "Birth day",
+                "Enter the day you were born", JOptionPane.QUESTION_MESSAGE);
+        int bornDay = Integer.parseInt(inputStr);
+        int currentDay = LocalDate.now().getDayOfMonth();
+        if (currentMonth < bornMonth)
+            age--;
+        else if (currentDay < bornDay)
+            age --;
         System.out.println("Your age is:"+age);
     }
 }

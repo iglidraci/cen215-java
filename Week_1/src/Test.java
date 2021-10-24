@@ -6,7 +6,27 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Test {
+    public static void selectionSort(int[] array) {
+        int length = array.length;
+        int min;
+        int minIndex;
+        for (int i = 0; i < length; i++) {
+            min = array[i];
+            minIndex = i;
+            for (int j = i; j < length; j++) {
+                if (array[j] < min) {
+                    min = array[j];
+                    minIndex = j;
+                }
+            }
+            int temp = array[i];
+            array[i] = min;
+            array[minIndex] = temp;
+        }
+    }
     public static void main(String[] args) {
+        int[] array = new int[] {43, 2, 45, 5, 1, 12, 4, 5, 2, 1, 23, 6};
+        selectionSort(array);
         Scanner scanner = new Scanner(System.in).useDelimiter("\\n");
         int in1 = scanner.nextInt();
         String in2 = scanner.next();
