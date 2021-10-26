@@ -23,25 +23,24 @@ public class TestWeek2 {
          System.out.printf("Average of the double array = %.2f\n", doubleAverage);
 
          // read two arrays from terminal and check if they equal or not
-         scanner.useDelimiter("\\n");
-         System.out.print("Enter list1: ");
+         scanner = new Scanner(System.in).useDelimiter("\\n");
+         System.out.println("Enter list1: ");
          String input1 = scanner.next();
-         System.out.printf("\nEnter list2: ");
+         System.out.println("Enter list2: ");
          String input2 = scanner.next();
-         String[] list1 = input1.split(" ");
-         String[] list2 = input2.split(" ");
+         String[] list1 = input1.split("\\s+");
+         String[] list2 = input2.split("\\s+");
          int[] array1 = new int[list1.length];
          int[] array2 = new int[list2.length];
-         for(int i=0; i<list1.length; i++){
+         for(int i=0; i<list1.length; i++)
              array1[i] = Integer.parseInt(list1[i]);
-         }
          for (int i=0; i < list2.length; i++)
              array2[i] = Integer.parseInt(list2[i]);
          boolean areEqual = Week2.equal(array1, array2);
          System.out.println("Two arrays that you entered are " +
          (areEqual ? "" : "not ") + "equal");
 
-         Week2.randomMatrix(4);
+        Week2.randomMatrix(4);
         String[] students = new String[] {"Igli", "Ambra", "Desa"};
         String[] subjects = new String[] {"OOP", "Algorithms", "Data structures"};
         int[][] grades = Week2.buildRandomGrades(subjects.length, students.length);
@@ -63,5 +62,6 @@ public class TestWeek2 {
         double e = Week2.computeE(val);
         System.out.println("e computed over " + val + " = " + e);
         Week2.drawDiamond(9);
+        scanner.close();
     }
 }
