@@ -1,3 +1,6 @@
+import jdk.jshell.spi.ExecutionControl;
+
+import java.security.InvalidAlgorithmParameterException;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -247,7 +250,7 @@ public class Week2 {
         }
         System.out.println("----------------");
     }
-    public static double computeE(int i) {
+    public static double computeERec(int i) {
         double e = 1.;
         for (int j = 1; j <= i; j++) {
             long factorial = factorial(j);
@@ -255,6 +258,20 @@ public class Week2 {
         }
         return e;
     }
+
+    public static double computeE(int i) {
+        double e = 1.;
+        int counter = 1;
+        double factorial = 1;
+        while (counter <= i) {
+            factorial *= counter;
+            factorial = factorial > 0 ? factorial : Double.MAX_VALUE;
+            e += 1/factorial;
+            counter += 1;
+        }
+        return e;
+    }
+
 
     private static long factorial(int nr) {
         if (nr <= 1)
@@ -298,6 +315,46 @@ public class Week2 {
             // we suppose that we take one space for the number and one for backspace
             System.out.print("  ");
         }
+    }
+    // extra exercise
+    // find the fibonacci number at a certain position
+    public static long fibonacciNumberAt(int position, int firstNumber, int secondNumber) throws InvalidAlgorithmParameterException {
+        return getFibonacciNumber(position, firstNumber, secondNumber);
+    }
+
+    private static long getFibonacciNumber(int position, long firstNumber, long secondNumber) throws InvalidAlgorithmParameterException {
+        if (position < 1)
+            throw new InvalidAlgorithmParameterException("Position should be greater or equal to 1");
+        else if (position == 1)
+            return firstNumber;
+        else if (position == 2)
+            return secondNumber;
+        else {
+            int counter = 3;
+            long nextNumber = 0;
+            while (counter <= position) {
+                nextNumber = firstNumber + secondNumber;
+                firstNumber = secondNumber;
+                secondNumber = nextNumber;
+                counter++;
+            }
+            return nextNumber;
+        }
+    }
+
+    public static long fibonacciNumberAt(int position) throws InvalidAlgorithmParameterException {
+        return getFibonacciNumber(position, 1, 1);
+    }
+    public static long fibonacciNumberAtRecursively(int position) {
+        return getFibonacciNumberRec(position, 1, 1);
+    }
+    public static long fibonacciNumberAtRecursively(int position, int firstNumber, int secondNumber){
+        return getFibonacciNumberRec(position, firstNumber, secondNumber);
+    }
+
+    private static long getFibonacciNumberRec(int position, long firstNumber, long secondNumber) {
+        // implement it here
+        return 1;
     }
 }
 

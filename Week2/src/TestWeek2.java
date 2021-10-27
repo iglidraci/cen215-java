@@ -1,5 +1,6 @@
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import java.util.Scanner;
+
 public class TestWeek2 {
     public static void main(String[] args) {
          String penNumbers = JOptionPane.showInputDialog("Enter the number of pentagonal numbers");
