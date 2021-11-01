@@ -9,7 +9,6 @@ public class IntersectingPoint {
             double x = linearEquation.getX();
             double y = linearEquation.getY();
             System.out.println("x=" + x + " and y=" + y);
-
         } catch (InvalidAlgorithmParameterException exception) {
             System.out.println(exception.getMessage());
         }
