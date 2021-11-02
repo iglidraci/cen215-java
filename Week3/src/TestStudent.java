@@ -1,6 +1,6 @@
-import java.util.Arrays;
-import java.util.Objects;
+import javax.swing.*;
 import java.util.Random;
+
 
 public class TestStudent {
     public static void main(String[] args) {
@@ -14,21 +14,19 @@ public class TestStudent {
                 "ludi",
                 "sindi",
                 "tila"};
+        int nrGrades = Integer.parseInt(JOptionPane.showInputDialog("How many grades do you want to test?"));
         Student[] students = new Student[studentNames.length];
+        int[] grades;
         Random random = new Random();
         for (int i = 0; i < students.length; i++) {
-            students[i] = new Student(studentNames[i],
-                    random.nextInt(61) + 40,
-                    random.nextInt(61) + 40,
-                    random.nextInt(61) + 40,
-                    random.nextInt(61) + 40,
-                    random.nextInt(61) + 40
-                    );
+            grades = new int[nrGrades];
+            for (int j = 0; j < nrGrades; j++) {
+                grades[j] = random.nextInt(61) + 40;
+            }
+            students[i] = new Student(studentNames[i], grades);
         }
 //        Arrays.sort(students, (x, y) -> Double.compare(x.getAverage(), y.getAverage()));
         insertionSortStudents(students);
-        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s %-20s\n",
-                "", "Grade1", "Grade2", "Grade3", "Grade4", "Grade5", "Average");
         for(Student student: students)
             System.out.println(student);
     }

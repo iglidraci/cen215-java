@@ -34,9 +34,11 @@ public class Student {
 
     @Override
     public String toString() {
-        return String.format("%-20s %-20d %-20d %-20d %-20d %-20d %-20.2f",
-                getName(), getGrades()[0], getGrades()[1],
-                getGrades()[2], getGrades()[3], getGrades()[4],
-                getAverage());
+        // suppose we don't need more than 10 chars for students name
+        String format = String.format("%-10s ", getName());
+        for(int grade: grades)
+            format += String.format("%-8d ", grade);
+        format += String.format("%-8.2f", getAverage());
+        return format;
     }
 }
