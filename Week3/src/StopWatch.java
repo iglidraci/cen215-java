@@ -1,5 +1,3 @@
-import java.util.Date;
-
 public class StopWatch {
     private long startTime;
     private long endTime;
