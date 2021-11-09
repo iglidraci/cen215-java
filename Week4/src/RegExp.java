@@ -46,5 +46,12 @@ public class RegExp {
         for(String creditCard: creditCards)
             System.out.println("Credit card " + creditCard +
                     (creditCard.matches(creditCardFormat) ? " is correct" : " is not correct"));
+
+        String name = "Shkëlqim Hëna Çela";
+        String pattern = ".*hena.*";
+        boolean matches = name.toLowerCase().replace('ç', 'c')
+                        .replace('ë', 'e').matches(pattern);
+        System.out.println(name + " matches " + pattern + " ? " + matches);
+
     }
 }
