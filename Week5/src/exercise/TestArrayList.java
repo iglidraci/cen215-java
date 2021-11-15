@@ -1,6 +1,9 @@
 package exercise;
 
+import exercise.ds.FirstOrLastIFO;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
@@ -19,11 +22,14 @@ public class TestArrayList {
         }
         System.out.println("Before sorting");
         printList(list);
-        sort(list, false, false);
+        sort(list, false, true);
         System.out.println("After sorting");
         printList(list);
-        sort(list, false, true);
+        sort(list, false, false);
         printList(list);
+        ArrayList<Integer> shuffled = shuffleList(list);
+        System.out.println("After shuffling:");
+        printList(shuffled);
         ArrayList<Integer> unique = removeDuplicate(list);
         System.out.println("After removing duplicate values:");
         printList(unique);
@@ -78,11 +84,28 @@ public class TestArrayList {
 
     @SafeVarargs
     public static ArrayList<Integer> unionLists(ArrayList<Integer>... lists) {
-        /* union together an array of lists */
+        /*
+        union together an array of lists, take only unique values
+        */
         ArrayList<Integer> union = new ArrayList<>();
         for (ArrayList<Integer> list: lists)
             union.addAll(list);
-        return union;
+        return removeDuplicate(union);
+    }
+
+    public static ArrayList<Integer> shuffleList (ArrayList<Integer> list) {
+        Random random = new Random();
+        Integer[] newList = new Integer[list.size()];
+        boolean[] isTaken = new boolean[list.size()];
+        int nextIndex;
+        for (int val: list) {
+            do {
+                nextIndex = random.nextInt(list.size());
+            } while(isTaken[nextIndex]);
+            newList[nextIndex] = val;
+            isTaken[nextIndex] = true;
+        }
+        return new ArrayList<>(Arrays.asList(newList));
     }
     public static double sum(ArrayList<Double> list) {
         double sum = 0;
