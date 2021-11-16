@@ -1,7 +1,6 @@
 package exercise.ds;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class FirstOrLastIFO {
     private final ArrayList<Integer> list;
