@@ -1,6 +1,7 @@
 package files;
 
 import java.io.File;
+import java.io.IOException;
 
 public class TestFileClass {
     public static final String CWD = "Exceptions&Files/src/files";
@@ -17,6 +18,8 @@ public class TestFileClass {
         print("is hidden?"+file.isHidden());
         print("absolute path is " + file.getAbsolutePath());
         print("last modified " + file.lastModified());
+        print("name " + file.getName());
+        print("parent " + file.getParent());
     }
     public static void print(String text) {
         System.out.println(text);
