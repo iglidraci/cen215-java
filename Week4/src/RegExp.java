@@ -4,9 +4,10 @@
 * */
 public class RegExp {
     public static void main(String[] args) {
-        matches();
-        replace();
-        split();
+//        matches();
+//        replace();
+//        split();
+        midtermRegex();
     }
 
     private static void split() {
@@ -53,5 +54,14 @@ public class RegExp {
                         .replace('ë', 'e').matches(pattern);
         System.out.println(name + " matches " + pattern + " ? " + matches);
 
+    }
+
+    private static void midtermRegex() {
+        String phoneNr = "+355 68 22 22 222";
+        String phoneFormat = "^\\+\\d{3} \\d{2} \\d{2} \\d{2} \\d{3}";
+        System.out.println("Phone number " + phoneNr + (phoneNr.matches(phoneFormat) ? " is correct" : " is not correct"));
+        String date = "2-11-2020";
+        String dateFormat = "^(\\d|\\d{2})-\\d{2}-\\d{4}";
+        System.out.println("Date " + date + (date.matches(dateFormat) ? " is correct": " is not correct"));
     }
 }

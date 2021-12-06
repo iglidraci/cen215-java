@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Exceptions&amp;Files/Exceptions&amp;Files.iml" filepath="$PROJECT_DIR$/Exceptions&amp;Files/Exceptions&amp;Files.iml" />
       <module fileurl="file://$PROJECT_DIR$/InheritancePolymorphism/InheritancePolymorphism.iml" filepath="$PROJECT_DIR$/InheritancePolymorphism/InheritancePolymorphism.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MidtermPrep/MidtermPrep.iml" filepath="$PROJECT_DIR$/MidtermPrep/MidtermPrep.iml" />
       <module fileurl="file://$PROJECT_DIR$/Week2/Week2.iml" filepath="$PROJECT_DIR$/Week2/Week2.iml" />
       <module fileurl="file://$PROJECT_DIR$/Week3/Week3.iml" filepath="$PROJECT_DIR$/Week3/Week3.iml" />
       <module fileurl="file://$PROJECT_DIR$/Week4/Week4.iml" filepath="$PROJECT_DIR$/Week4/Week4.iml" />
