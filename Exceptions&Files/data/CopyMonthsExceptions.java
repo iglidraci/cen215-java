@@ -2,7 +2,7 @@ import java.time.YearMonth;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ArrayIndexOutOfBounds {
+public class MonthsExceptions {
     public static void main(String[] args) {
         Month[] months = new Month[12];
         YearMonth yearMonth;

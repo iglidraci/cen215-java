@@ -63,23 +63,46 @@ public class Triangle2D {
         return Math.sqrt(s*(s-getA())*(s-getB())*(s-getC()));
     }
 
-    public boolean contains(MyPoint p) {
-        /*
-        Let the points of our triangle be A B and C.
-        P is our given point
-        1) Calculate area of the triangle ABC. Let this area be A.
-        2) Calculate area of the triangle PAB. Let this area be A1.
-        3) Calculate area of the triangle PBC. Let this area be A2.
-        4) Calculate area of the triangle PAC. Let this area be A3.
-        5) A1 + A2 + A3 must be equal to A if P is inside our triangle
-        */
-        double a = getArea();
-        double a1 = new Triangle2D(p, p1, p2).getArea();
-        double a2 = new Triangle2D(p, p2, p3).getArea();
-        double a3 = new Triangle2D(p, p1, p3).getArea();
-        double total = a1 + a2 + a3;
-        System.out.println("Current are " + a);
-        System.out.println("Total pieces area " + total);
-        return String.format("%.5f", a).equals(String.format("%.5f", total));
+    // Rubin Aga solution
+
+//    public boolean contains(MyPoint p) {
+//        double denominator = ((p2.getY() - p3.getY())*(p1.getX() - p3.getX()) + (p3.getX() - p2.getX())*(p1.getY() - p3.getY()));
+//        double a = ((p2.getY() - p3.getY())*(p.getX() - p3.getX()) + (p3.getX() - p2.getX()) * (p.getY() - p3.getY())) / denominator;
+//        double b = ((p3.getY() - p1.getY())*(p.getX() - p3.getX()) + (p1.getX() - p3.getX())*(p.getY() - p3.getY())) / denominator;
+//        double c = 1 - a - b;
+//        return a >= 0 && a <= 1 && b >= 0 && b <= 1 && c >= 0 && c <= 1;
+//    }
+
+    public static boolean nearlyEqual(double a, double b, double epsilon) {
+        final double absA = Math.abs(a);
+        final double absB = Math.abs(b);
+        final double diff = Math.abs(a - b);
+
+        if (a == b) {
+            return true;
+        } else if (a == 0 || b == 0 || (absA + absB < Double.MIN_NORMAL)) {
+
+            return diff < (epsilon * Double.MIN_NORMAL);
+        } else { // use relative error
+            return diff / Math.min((absA + absB), Double.MAX_VALUE) < epsilon;
+        }
+    }
+    public static double relativeEpsilon( double a, double b )
+    {
+        return Math.max(Math.ulp(a),Math.ulp(b));
+    }
+
+    public boolean pointInside(MyPoint p) {
+        Triangle2D Triangle1=new Triangle2D(p,p1,p2);
+        Triangle2D Triangle2=new Triangle2D(p,p2,p3);
+        Triangle2D Triangle3=new Triangle2D(p,p1,p3);
+        double a=Triangle1.getArea();
+        double b=Triangle2.getArea();
+        double c=Triangle3.getArea();
+        double AREA=getArea();
+        System.out.println(AREA);
+        double subArea=a+b+c;
+        double epsilon=relativeEpsilon(AREA,subArea);
+        return nearlyEqual(AREA,subArea,epsilon);
     }
 }

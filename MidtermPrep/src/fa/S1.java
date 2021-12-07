@@ -25,11 +25,6 @@ public class S1 {
         System.out.println(b);
         return a + c;
     }
-
-    public static void main(String[] args) {
-        S1 s1 = new S1();
-        S1 s12 = new S1();
-    }
     static {
         System.out.println("S1 static scope in the end of the file");
     }
