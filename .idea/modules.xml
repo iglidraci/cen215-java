@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AbstractClasses/AbstractClasses.iml" filepath="$PROJECT_DIR$/AbstractClasses/AbstractClasses.iml" />
       <module fileurl="file://$PROJECT_DIR$/Exceptions&amp;Files/Exceptions&amp;Files.iml" filepath="$PROJECT_DIR$/Exceptions&amp;Files/Exceptions&amp;Files.iml" />
       <module fileurl="file://$PROJECT_DIR$/InheritancePolymorphism/InheritancePolymorphism.iml" filepath="$PROJECT_DIR$/InheritancePolymorphism/InheritancePolymorphism.iml" />
       <module fileurl="file://$PROJECT_DIR$/MidtermPrep/MidtermPrep.iml" filepath="$PROJECT_DIR$/MidtermPrep/MidtermPrep.iml" />
