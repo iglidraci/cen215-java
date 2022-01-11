@@ -1,27 +1,39 @@
+/*
+* It's appropriate to inherit from Number Abstract Base Class
+* Number is the root class for numeric wrapper classes
+* Implement Comparable interface since we can compare rational numbers
+* */
 public class Rational extends Number implements Comparable<Rational>{
-    private final long nominator;
+    private final long numerator;
     private final long denominator;
 
-    public long getNominator() {
-        return nominator;
+    public long getNumerator() {
+        return numerator;
     }
 
     public long getDenominator() {
         return denominator;
     }
 
-    public Rational(long nominator, long denominator) {
+    public Rational(long nominator, long denominator) throws IllegalArgumentException {
         if (denominator == 0)
             throw new IllegalArgumentException("Denominator cannot be 0");
+        // find the GCD of the absolute values of numerator and denominator
+        // this way we can reduce the lowest terms
         long gcd = getGcd(Math.abs(nominator), Math.abs(denominator));
         // keep the denominator always positive
         // let the sign be represented in the nominator
-        this.nominator = (denominator > 0 ? 1 : -1) * nominator / gcd;
+        this.numerator = (denominator > 0 ? 1 : -1) * nominator / gcd;
         this.denominator = Math.abs(denominator)/gcd;
     }
-
+    /*
+    * Euclid formula
+    * Let's consider 9 and 12
+    * 1) 3 and 9
+    * 2) 0 and 3
+    * 3) return 3
+    * */
     public static long getGcd(long a, long b) {
-        // euclid
         if (a == 0)
             return b;
         return getGcd(b%a, a);
@@ -32,36 +44,35 @@ public class Rational extends Number implements Comparable<Rational>{
     }
     public Rational add(Rational other) {
         long d = getDenominator() * other.getDenominator();
-        long n = getNominator()* other.getDenominator() + getDenominator() * other.getNominator();
+        long n = getNumerator()* other.getDenominator() + getDenominator() * other.getNumerator();
         return new Rational(n, d);
     }
     public Rational subtract(Rational other) {
         long d = getDenominator() * other.getDenominator();
-        long n = getNominator()* other.getDenominator() - getDenominator() * other.getNominator();
+        long n = getNumerator()* other.getDenominator() - getDenominator() * other.getNumerator();
         return new Rational(n, d);
     }
     public Rational multiply(Rational other) {
-        long n = getNominator() * other.getNominator();
+        long n = getNumerator() * other.getNumerator();
         long d = getDenominator() * other.getDenominator();
         return new Rational(n, d);
     }
     public Rational divide (Rational other) {
-        long n = getNominator() * other.getDenominator();
-        long d = getDenominator() * other.getNominator();
+        long n = getNumerator() * other.getDenominator();
+        long d = getDenominator() * other.getNumerator();
         return new Rational(n, d);
     }
     @Override
     public String toString() {
         if (denominator == 1)
-            return String.valueOf(nominator);
-        return nominator + "/" + denominator;
+            return String.valueOf(numerator);
+        return numerator + "/" + denominator;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Rational) {
-            Rational difference = this.subtract((Rational) obj);
-            return difference.getNominator() == 0;
+            return this.compareTo((Rational) obj) == 0;
         }
         return false;
     }
@@ -69,9 +80,9 @@ public class Rational extends Number implements Comparable<Rational>{
     @Override
     public int compareTo(Rational o) {
         Rational difference = this.subtract(o);
-        if (difference.getNominator() > 0)
+        if (difference.getNumerator() > 0)
             return 1;
-        else if (difference.getNominator() < 0)
+        else if (difference.getNumerator() < 0)
             return -1;
         return 0;
     }
@@ -93,6 +104,6 @@ public class Rational extends Number implements Comparable<Rational>{
 
     @Override
     public double doubleValue() {
-        return (double) nominator / denominator;
+        return (double) numerator / denominator;
     }
 }
