@@ -17,6 +17,8 @@ public class TestComparableCloneable {
         };
         Arrays.sort(circles);
         System.out.println(Arrays.toString(circles));
+        ComparableCircle cloneCircle = circles[0].clone();
+        System.out.println("Clone: " + cloneCircle);
     }
 }
 
