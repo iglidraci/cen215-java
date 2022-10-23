@@ -16,7 +16,8 @@ public class Lottery {
             System.out.println("You won $1000");
         } else if (guessNr1 == lotteryNr2 && guessNr2 == lotteryNr1) {
             System.out.println("You won $300");
-        } else if (guessNr1 == lotteryNr1 || guessNr1 == lotteryNr2 || guessNr2 == lotteryNr1 || guessNr2 == lotteryNr2) {
+        } else if (guessNr1 == lotteryNr1 || guessNr1 == lotteryNr2 ||
+                    guessNr2 == lotteryNr1 || guessNr2 == lotteryNr2) {
             System.out.println("You won $100");
         } else {
             System.out.println("You didn't win anything");
