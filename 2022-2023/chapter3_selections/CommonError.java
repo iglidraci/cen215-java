@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class CommonError {
     public static void main (String[] args) {
+        final double PI = 3.14;
         double radius, area;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the radius: ");
