@@ -21,4 +21,8 @@ public class TestMethodOverloading {
     public static double myMax(double a, double b, double c) {
         return myMax(a, myMax(b, c));
     }
+    /*
+    * Can you invoke myMax method with an int value and a double value? If so, which method is invoked?
+    * Why max(1, 2) invokes the first method?
+    * */
 }
