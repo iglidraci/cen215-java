@@ -13,6 +13,7 @@ public class TestPassArray {
         swapFirstTwoElements(list);
         System.out.print("After calling swapFirstTwoElements: ");
         ArrayBasics.printArray(list);
+        ArrayBasics.printArray(new int[] {1, 2, 3}); // anonymous array passed
     }
 
     public static void swap(int n1, int n2) {
