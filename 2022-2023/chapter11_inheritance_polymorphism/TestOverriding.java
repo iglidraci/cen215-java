@@ -2,13 +2,15 @@ public class TestOverriding {
     public static void main(String[] args) {
         A a = new A();
         a.foo(10);
-        a.foo(10.0);
+        a.foo(10.5);
         a.bar(10);
-        a.bar(10.0);
+        a.bar(10.5);
         /**
          * Talking points about overriding
          * 1) The overriding method must have the same signature as the overridden method and
          * same or compatible return type.
+         * Compatible means that the overriding method’s
+         * return type is a subtype of the overridden method’s return type
          * 2) An instance method is overridden only if it is accessible. Thus, private methods
          * cannot be overridden.
          * 3) A static method can be inherited, however it cannot be overridden
@@ -23,6 +25,12 @@ public class TestOverriding {
          * 2) Overridden methods have the same signature
          * overloaded methods have the same name but different parameter lists.
          */
+
+        /*
+         @Override annotation
+         If a method with this annotation does not override its superclass’s method, the
+         compiler will report an error
+         */
     }
 }
 class B {
@@ -32,6 +40,7 @@ class B {
     public void bar(double i) {
         System.out.println(i * 2);
     }
+
 }
 class A extends B {
     // This method overrides the method in B

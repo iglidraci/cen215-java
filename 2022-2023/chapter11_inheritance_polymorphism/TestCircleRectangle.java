@@ -17,7 +17,7 @@ public class TestCircleRectangle {
          * 1) A subclass is not a subset of its superclass
          * 2) Private data fields in a superclass are not accessible outside the class (only through get/set)
          * 3) Not all is-a relationships should be modeled through inheritance (Square is Rectangle)
-         * 4) Do not extend a class just for the sake of reusing methods (Person, Tree, both have height and weight)
+         * 4) No blind extensions (Person, Tree, both have height and weight)
          * 5) In Java you can inherit directly from only one superclass (single inheritance)
          */
     }
