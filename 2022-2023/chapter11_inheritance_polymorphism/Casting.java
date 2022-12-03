@@ -1,7 +1,11 @@
 public class Casting {
     public static void main(String[] args) {
         GeometricObject obj1 = new Circle(2.5); // implicit casting (upcasting)
-        // Circle obj2 = obj1; // -> you can't do that even though obj1 is a Circle
+        /*
+            Circle obj2 = obj1; // -> you can't do that even though obj1 is a Circle
+            The reason for that is that a Circle object is always an instance of Object class
+            An Object instance is not necessarily an instance of Circle
+         */
         Circle obj2 = (Circle) obj1; // explicit casting (down-casting)
         /**
          * If the superclass object is not an instance of the subclass, a runtime
@@ -10,6 +14,14 @@ public class Casting {
         GeometricObject obj3 = new Rectangle(3, 4);
         displayGeometricObject(obj1);
         displayGeometricObject(obj3);
+        /**
+         * Casting a primitive value is different from casting an object reference
+         */
+        int age = 45;
+        byte newAge = (byte)age; // A new value is assigned to newAge
+        Object o = new Circle();
+        Circle c = (Circle)o; // No new object is created
+        // Both o and c point to the same object
     }
 
     public static void displayGeometricObject(GeometricObject obj) {

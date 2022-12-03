@@ -44,6 +44,7 @@ class Mammal extends Animal {
 }
 
 class Animal {
+    // child of the Object class
     @Override
     public String toString() {
         return "An animal";
