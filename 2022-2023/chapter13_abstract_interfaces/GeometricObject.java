@@ -27,5 +27,6 @@ public abstract class GeometricObject {
     }
 
     public abstract double getArea();
-    abstract double getPerimeter();
+    public abstract double getPerimeter();
+
 }

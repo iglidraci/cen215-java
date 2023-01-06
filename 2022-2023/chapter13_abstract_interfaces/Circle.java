@@ -21,7 +21,7 @@ public class Circle extends GeometricObject {
     }
 
     @Override
-    double getPerimeter() {
+    public double getPerimeter() {
         return 2 * Math.PI * this.radius;
     }
 }

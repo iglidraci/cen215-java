@@ -29,7 +29,7 @@ public class Rectangle extends GeometricObject {
     }
 
     @Override
-    double getPerimeter() {
+    public double getPerimeter() {
         return 2 * (side1 + side2);
     }
 
