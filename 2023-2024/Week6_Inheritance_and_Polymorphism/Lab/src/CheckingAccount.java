@@ -21,10 +21,13 @@ public class CheckingAccount extends Account{
     }
 
     @Override
-    public void withdraw(double amount) {
-        if(amount > 0 && getBalance() - amount >= overdraft)
-            super.withdraw(amount);
-        else
+    public boolean withdraw(double amount) {
+        if(getBalance() - amount >= overdraft)
+            return super.withdraw(amount);
+        else{
             System.out.println("Transaction failed because of your overdraft limit");
+            return false;
+        }
+
     }
 }

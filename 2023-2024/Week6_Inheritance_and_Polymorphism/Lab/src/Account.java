@@ -6,8 +6,18 @@ public class Account {
     private String id;
     private double balance;
     private double annualInterestRate;
-    private final ArrayList<Transaction> transactions;
+    private final ArrayList<Transaction> transactions = new ArrayList<>();
     private final Date dateCreated;
+
+    public Account(String id, String name, double balance) {
+        this.name = name;
+        this.id = id;
+        setBalance(balance);
+        this.dateCreated = new Date();
+    }
+    public Account(String id, String name) {
+        this(id, name, 0);
+    }
 
     public String getName() {
         return name;
@@ -29,7 +39,7 @@ public class Account {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public final void setBalance(double balance) {
         this.balance = balance >= 0 ? balance : this.balance;
     }
 
@@ -60,30 +70,23 @@ public class Account {
         return this.balance*getMonthlyInterestRate();
     }
 
-    public Account(String id, String name, double balance) {
-        this.name = name;
-        this.id = id;
-        setBalance(balance);
-        this.dateCreated = new Date();
-        this.transactions = new ArrayList<>();
-    }
-    public Account(String id, String name) {
-        this(id, name, 0);
-    }
 
-    public void deposit(double amount) {
+
+    public boolean deposit(double amount) {
         if (amount > 0) {
-            Transaction transaction = new Transaction(amount, TransactionType.DEPOSIT);
-            transactions.add(transaction);
             balance += amount;
+            transactions.add(new Transaction(amount, TransactionType.DEPOSIT));
+            return true;
         }
+        return false;
     }
-    public void withdraw(double amount) {
+    public boolean withdraw(double amount) {
         if (amount > 0 && amount <= balance) {
-            Transaction transaction = new Transaction(amount, TransactionType.WITHDRAWAL);
-            transactions.add(transaction);
+            transactions.add(new Transaction(amount, TransactionType.WITHDRAWAL));
             balance -= amount;
+            return true;
         }
+        return false;
     }
     public void printTransactions() {
         System.out.println("Mr/Mrs " + this.name + " here are your transactions");

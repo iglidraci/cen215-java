@@ -8,8 +8,20 @@ public class Transaction {
     private final String description;
     private final String id;
 
+    public Transaction(double amount, TransactionType type, String description) {
+        this.amount = amount;
+        this.type = type;
+        this.description = description;
+        this.date = new Date();
+        this.id = UUID.randomUUID().toString();
+    }
+
+    public Transaction(double amount, TransactionType type) {
+        this(amount, type, "Unknown reason");
+    }
+
     public Date getDate() {
-        return date;
+        return new Date(date.getTime());
     }
 
     public double getAmount() {
@@ -28,17 +40,7 @@ public class Transaction {
         return id;
     }
 
-    public Transaction(double amount, TransactionType type, String description) {
-        this.amount = amount;
-        this.type = type;
-        this.description = description;
-        this.date = new Date();
-        this.id = UUID.randomUUID().toString();
-    }
 
-    public Transaction(double amount, TransactionType type) {
-        this(amount, type, "Unknown reason");
-    }
 
     @Override
     public String toString() {
