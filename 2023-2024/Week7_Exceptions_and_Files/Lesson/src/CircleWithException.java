@@ -1,12 +1,12 @@
-public class Circle {
+public class CircleWithException {
     private double radius;
     private static int numberOfObjects = 0;
 
-    public Circle() {
+    public CircleWithException() {
         this(1.0);
     }
 
-    public Circle(double radius) {
+    public CircleWithException(double radius) {
         setRadius(radius);
         numberOfObjects++;
     }

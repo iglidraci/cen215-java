@@ -1,9 +1,9 @@
-public class TestCircle {
+public class TestCircleWithException {
     public static void main(String[] args) {
         try {
-            Circle c1 = new Circle(5);
-            Circle c2 = new Circle(-5);
-            Circle c3 = new Circle();
+            CircleWithException c1 = new CircleWithException(5);
+            CircleWithException c2 = new CircleWithException(-5);
+            CircleWithException c3 = new CircleWithException();
         } catch (IllegalArgumentException ex) {
             ex.printStackTrace();
             System.out.println(ex.getMessage());
@@ -15,6 +15,6 @@ public class TestCircle {
                 System.out.print(traceElement.getLineNumber() + ")\n");
             }
         }
-        System.out.println("Number of created objects: " + Circle.getNumberOfObjects());
+        System.out.println("Number of created objects: " + CircleWithException.getNumberOfObjects());
     }
 }
