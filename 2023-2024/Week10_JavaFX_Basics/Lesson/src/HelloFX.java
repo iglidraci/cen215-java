@@ -11,8 +11,7 @@ public class HelloFX extends Application {
   @Override
   public void start(Stage primaryStage) {
     /*
-    A Stage object is a window. A Stage object called primary stage is created by
-    the JVM when the application is launched
+    A Stage object is a window. A Stage object called primary stage is created by the JVM when the application is launched
     */
     Button okBtn = new Button("OK");
     Scene scene = new Scene(okBtn, 200, 250);
