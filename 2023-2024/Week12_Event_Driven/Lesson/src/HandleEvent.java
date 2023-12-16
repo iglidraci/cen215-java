@@ -47,7 +47,6 @@ class OkBtnHandler implements EventHandler<ActionEvent> {
 
 	@Override
 	public void handle(ActionEvent event) {
-        System.out.println(event.getSource());
 		System.out.println("OK button clicked");
 	}
 	
