@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class GenericStack<E> {
+public class GenericStack<E> { // a generic class may have more than one parameter <E1, E2, E3>
     private final ArrayList<E> elements = new ArrayList<>();
     public void push (E element) {
         this.elements.add(element);

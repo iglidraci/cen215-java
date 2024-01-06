@@ -1,8 +1,8 @@
 public class RawType {
     public static void main(String[] args) {
         System.out.println(max1("aa", "bb"));
-        // System.out.println(max1("aa", 2)); // will compile but runtime error
-        // System.out.println(max2("aa", 2)); // compiler error
+//         System.out.println(max1("aa", 2)); // will compile but runtime error
+//         System.out.println(max2("aa", 2)); // compiler error
     }
     public static Comparable max1(Comparable o1, Comparable o2) {
         // raw types, for backward compatibility

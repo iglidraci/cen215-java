@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Motivation {
@@ -7,6 +8,10 @@ public class Motivation {
         System.out.println(c.compareTo("hello")); // compiles fine but runtime error
 
         Comparable<Date> d = new Date();
-//        System.out.println(d.compareTo("hello")); // compile error
+        // System.out.println(d.compareTo("hello")); // compile error
+        // generic types must be reference types
+        ArrayList<Integer> integers = new ArrayList<>();
+        integers.add(1);
+        int a = integers.get(0); // auto-unboxing
     }
 }

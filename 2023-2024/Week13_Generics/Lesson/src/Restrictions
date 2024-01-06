@@ -1,0 +1,45 @@
+
+// 1) Cannot Instantiate Generic Types with Primitive Types
+// 2) Cannot Create Instances of Type Parameters
+// T elem = new T(); // compile-time error
+// As a workaround, you can create an object of a type parameter through reflection, but it's beyond the scope of the course
+// 3) A Generic Type Parameter of a Class Is Not Allowed in a Static Context
+// 4) Cannot Use Casts or instanceof with Parameterized Types
+// Because the Java compiler erases all type parameters in generic code, you cannot verify which parameterized
+// type for a generic type is being used at runtime:
+public static <E> void rtti(List<E> list) {
+    if (list instanceof ArrayList<Integer>) {  // compile-time error
+        // ...
+    }
+}
+// Typically, you cannot cast to a parameterized type. For example:
+List<Integer> li = new ArrayList<>();
+List<Number>  ln = (List<Number>) li;  // compile-time error
+// In some cases the compiler knows it's a safe cast
+List<String> l1 = new ArrayList<>();
+ArrayList<String> l2 = (ArrayList<String>)l1;  // OK
+
+// 5) Cannot Create Arrays of Parameterized Types
+// E[] elements = new E[capacity]; // compile-time error
+// List<Integer>[] arrayOfLists = new List<Integer>[2];  // compile-time error
+// The following code illustrates what happens when different types are inserted into an array:
+
+Object[] strings = new String[2];
+strings[0] = "hi";   // OK
+strings[1] = 100;    // An ArrayStoreException is thrown.
+// If you try the same thing with a generic list, there would be a problem:
+
+Object[] stringLists = new List<String>[2];  // compiler error, but pretend it's allowed
+stringLists[0] = new ArrayList<String>();   // OK
+stringLists[1] = new ArrayList<Integer>();  // An ArrayStoreException should be thrown, but the runtime can't detect it.
+
+// 6) Exception Classes Cannot Be Generic
+// The JVM has to check the exception thrown from the try clause to see if it matches the type specified
+// in a catch clause. This is impossible, because the type information is not present at runtime.
+
+// 7) Cannot Overload a Method Where the Formal Parameter Types of Each Overload Erase to the Same Raw Type
+public void print(List<String> aa) { }
+public void print(List<Integer> bb) { }
+
+
+For more details, visit https://docs.oracle.com/javase/tutorial/java/generics/restrictions.html
